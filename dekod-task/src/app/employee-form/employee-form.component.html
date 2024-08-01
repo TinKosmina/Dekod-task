@@ -1,0 +1,35 @@
+<form (ngSubmit)="onSubmit(employeeForm)" #employeeForm="ngForm" novalidate>
+  <div>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" ngModel required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['firstName']?.valid">
+      First name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" ngModel required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['lastName']?.valid">
+      Last name is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input type="date" id="dateOfBirth" name="dateOfBirth" ngModel required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['dateOfBirth']?.valid">
+      Date of birth is required.
+    </div>
+  </div>
+
+  <div>
+    <label for="jobTitle">Job Title:</label>
+    <input type="text" id="jobTitle" name="jobTitle" ngModel required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['jobTitle']?.valid">
+      Job title is required.
+    </div>
+  </div>
+
+  <button type="submit">Save</button>
+</form>
