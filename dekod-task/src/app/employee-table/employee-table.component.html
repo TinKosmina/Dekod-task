@@ -19,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of filteredEmployees">
+    <tr *ngFor="let employee of paginatedEmployees">
       <td>{{ employee.id }}</td>
       <td>{{ employee.firstName }}</td>
       <td>{{ employee.lastName }}</td>
@@ -28,3 +28,14 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Pagination Controls -->
+<div *ngIf="totalPages > 1">
+  <button (click)="changePage(1)" [disabled]="currentPage === 1">First</button>
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+  <span *ngFor="let page of getPaginationArray()">
+    <button (click)="changePage(page)" [disabled]="currentPage === page">{{ page }}</button>
+  </span>
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+  <button (click)="changePage(totalPages)" [disabled]="currentPage === totalPages">Last</button>
+</div>

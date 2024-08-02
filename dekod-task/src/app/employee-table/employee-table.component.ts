@@ -9,11 +9,17 @@ import { EmployeeService } from '../employee.service';
 export class EmployeeTableComponent implements OnInit {
   employees: any[] = [];
   filteredEmployees: any[] = [];
+  paginatedEmployees: any[] = [];
 
   filterJobTitle: string = '';
   searchName: string = '';
   currentSortKey: string = '';
   currentSortDirection: 'asc' | 'desc' = 'asc';
+
+  // Pagination
+  currentPage: number = 1;
+  itemsPerPage: number = 5;
+  totalPages: number = 1;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -22,7 +28,8 @@ export class EmployeeTableComponent implements OnInit {
       (response: any[]) => {
         this.employees = response;
         this.filteredEmployees = [...this.employees];
-        // console.log('Employees data fetched:', this.filteredEmployees);
+        this.updatePagination();
+        console.log('Employees data fetched:', this.filteredEmployees);
       },
       error => {
         console.error('Error fetching employee data:', error);
@@ -41,7 +48,9 @@ export class EmployeeTableComponent implements OnInit {
       return matchesJobTitle && matchesName;
     });
 
-    this.sortEmployees(this.currentSortKey, true); // reapply sorting after filtering
+    this.currentPage = 1; // Reset to the first page on filter
+    this.sortEmployees(this.currentSortKey, true); // Reapply sorting after filtering
+    this.updatePagination(); // Update pagination after filtering
   }
 
   sortEmployees(key: string, maintainDirection: boolean = false): void {
@@ -76,6 +85,22 @@ export class EmployeeTableComponent implements OnInit {
       return 0;
     });
 
-    // console.log('Employees sorted:', this.filteredEmployees);
+    // this.updatePagination(); // Update pagination after sorting
+    console.log('Employees sorted:', this.filteredEmployees);
+  }
+
+  // Pagination methods
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
+    this.paginatedEmployees = this.filteredEmployees.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage);
+  }
+
+  changePage(page: number): void {
+    this.currentPage = page;
+    this.updatePagination();
+  }
+
+  getPaginationArray(): number[] {
+    return Array(this.totalPages).fill(0).map((x, i) => i + 1);
   }
 }
