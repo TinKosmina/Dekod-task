@@ -25,7 +25,7 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes) // Configure the router
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     EmployeeService,

@@ -1,15 +1,25 @@
+<div>
+  <label for="filterJobTitle">Filter by Job Title:</label>
+  <input type="text" id="filterJobTitle" [(ngModel)]="filterJobTitle" (input)="applyFilters()">
+</div>
+
+<div>
+  <label for="searchName">Search by Name:</label>
+  <input type="text" id="searchName" [(ngModel)]="searchName" (input)="applyFilters()">
+</div>
+
 <table border="1">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Date of Birth</th>
-      <th>Job Title</th>
+      <th class="sortEmployees" (click)="sortEmployees('id')">ID</th>
+      <th class="sortEmployees" (click)="sortEmployees('firstName')">First Name</th>
+      <th class="sortEmployees" (click)="sortEmployees('lastName')">Last Name</th>
+      <th class="sortEmployees" (click)="sortEmployees('dateOfBirth')">Date of Birth</th>
+      <th class="sortEmployees" (click)="sortEmployees('jobTitle')">Job Title</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of employees">
+    <tr *ngFor="let employee of filteredEmployees">
       <td>{{ employee.id }}</td>
       <td>{{ employee.firstName }}</td>
       <td>{{ employee.lastName }}</td>
