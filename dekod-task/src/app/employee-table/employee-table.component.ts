@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmployeeService } from '../employee.service';
+import { EmployeeModalComponent } from '../employee-modal/employee-modal.component';
 
 @Component({
   selector: 'app-employee-table',
@@ -21,7 +23,7 @@ export class EmployeeTableComponent implements OnInit {
   itemsPerPage: number = 5;
   totalPages: number = 1;
 
-  constructor(private employeeService: EmployeeService) { }
+  constructor(private employeeService: EmployeeService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
     this.employeeService.getEmployees().subscribe(
@@ -29,7 +31,6 @@ export class EmployeeTableComponent implements OnInit {
         this.employees = response;
         this.filteredEmployees = [...this.employees];
         this.updatePagination();
-        console.log('Employees data fetched:', this.filteredEmployees);
       },
       error => {
         console.error('Error fetching employee data:', error);
@@ -48,9 +49,9 @@ export class EmployeeTableComponent implements OnInit {
       return matchesJobTitle && matchesName;
     });
 
-    this.currentPage = 1; // Reset to the first page on filter
-    this.sortEmployees(this.currentSortKey, true); // Reapply sorting after filtering
-    this.updatePagination(); // Update pagination after filtering
+    this.currentPage = 1;
+    this.sortEmployees(this.currentSortKey, true);
+    this.updatePagination();
   }
 
   sortEmployees(key: string, maintainDirection: boolean = false): void {
@@ -85,11 +86,11 @@ export class EmployeeTableComponent implements OnInit {
       return 0;
     });
 
-    // this.updatePagination(); // Update pagination after sorting
+    this.updatePagination();
     console.log('Employees sorted:', this.filteredEmployees);
   }
 
-  // Pagination methods
+
   updatePagination(): void {
     this.totalPages = Math.ceil(this.filteredEmployees.length / this.itemsPerPage);
     this.paginatedEmployees = this.filteredEmployees.slice((this.currentPage - 1) * this.itemsPerPage, this.currentPage * this.itemsPerPage);
@@ -102,5 +103,10 @@ export class EmployeeTableComponent implements OnInit {
 
   getPaginationArray(): number[] {
     return Array(this.totalPages).fill(0).map((x, i) => i + 1);
+  }
+
+  openEmployeeModal(employee: any): void {
+    const modalRef = this.modalService.open(EmployeeModalComponent);
+    modalRef.componentInstance.employee = employee;
   }
 }

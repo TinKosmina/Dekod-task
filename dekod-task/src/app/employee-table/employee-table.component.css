@@ -1,4 +1,47 @@
-.sortEmployees:hover {
-    background-color: aquamarine;
+.employeeList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 10%;
+}
+
+
+.sortEmployees {
+    background-color: beige;
+}
+
+h1 {
+    width: 100%;
+}
+
+
+table {
+    border: 1px solid grey;
+    width: 100%;
+    margin: 20px 0;
+}
+
+th {
+    padding: 5px 10px;
+}
+
+tr:nth-of-type(even) {
+    background-color: beige;
+}
+
+td {
+
+    padding: 5px;
+
+}
+
+.sortEmployees:hover,
+tr:hover {
+    background-color: skyblue;
     cursor: pointer;
+}
+
+.pagination {
+    width: 100%;
+
 }
