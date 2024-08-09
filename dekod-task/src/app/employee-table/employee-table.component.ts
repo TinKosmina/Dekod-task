@@ -18,7 +18,6 @@ export class EmployeeTableComponent implements OnInit {
   currentSortKey: string = '';
   currentSortDirection: 'asc' | 'desc' = 'asc';
 
-  // Pagination
   currentPage: number = 1;
   itemsPerPage: number = 5;
   totalPages: number = 1;

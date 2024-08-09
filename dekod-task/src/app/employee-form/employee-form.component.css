@@ -1,0 +1,63 @@
+.employeeForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10%;
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    row-gap: 10px;
+    border: 1px solid #1670BE;
+    border-radius: 10px;
+}
+
+form div {
+
+    padding-left: 8px;
+}
+
+
+label {
+    width: 100%;
+}
+
+input {
+    width: 100%;
+    border: 1px solid #1670BE;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input:focus {
+    border: 1px solid #1670BE;
+    box-shadow: 0 0 5px #1670BE;
+    outline-offset: 0px;
+    outline: none;
+}
+
+button {
+    width: 50%;
+    margin-left: 8px;
+    margin-top: 8px;
+    padding: 5px;
+    background-color: #1670BE;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.requiredText {
+
+    color: red;
+    margin-top: 8px;
+}

@@ -1,13 +1,13 @@
 <div class="employeeList">
 
-  <h1>Employee List</h1>
+  <h3>Employee List</h3>
 
-<div>
+<div class="filterJobTitle">
   <label for="filterJobTitle">Filter by Job Title:</label>
   <input type="text" id="filterJobTitle" [(ngModel)]="filterJobTitle" (input)="applyFilters()">
 </div>
 
-<div>
+<div class="searchName">
   <label for="searchName">Search by Name:</label>
   <input type="text" id="searchName" [(ngModel)]="searchName" (input)="applyFilters()">
 </div>
@@ -16,24 +16,24 @@
   <thead>
     <tr>
       <th class="sortEmployees" (click)="sortEmployees('id')">ID</th>
-      <th class="sortEmployees" (click)="sortEmployees('firstName')">First Name</th>
-      <th class="sortEmployees" (click)="sortEmployees('lastName')">Last Name</th>
-      <th class="sortEmployees" (click)="sortEmployees('dateOfBirth')">Date of Birth</th>
-      <th class="sortEmployees" (click)="sortEmployees('jobTitle')">Job Title</th>
+      <th class="sortEmployees"  (click)="sortEmployees('firstName')">First Name</th>
+      <th class="sortEmployees"  (click)="sortEmployees('lastName')">Last Name</th>
+      <th class="sortEmployees"  (click)="sortEmployees('dateOfBirth')">Date of Birth</th>
+      <th class="sortEmployees"  (click)="sortEmployees('jobTitle')">Job Title</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let employee of paginatedEmployees" (click)="openEmployeeModal(employee)">
+    <tr *ngFor="let employee of paginatedEmployees" ngbTooltip="Click to view details" (click)="openEmployeeModal(employee)">
       <td>{{ employee.id }}</td>
       <td>{{ employee.firstName }}</td>
       <td>{{ employee.lastName }}</td>
-      <td>{{ employee.dateOfBirth | date: 'dd-MM-yyy' }}</td>
+      <td>{{ employee.dateOfBirth | date: 'yyyy-MM-dd' }}</td>
       <td>{{ employee.jobTitle }}</td>
     </tr>
   </tbody>
 </table>
 
-<!-- Pagination Controls -->
+
 <div class="pagination" *ngIf="totalPages > 1">
   <button (click)="changePage(1)" [disabled]="currentPage === 1">First</button>
   <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>

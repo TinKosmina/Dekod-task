@@ -1,35 +1,39 @@
+<div class="employeeForm">
+<h3>Add Employee</h3>
+
 <form (ngSubmit)="onSubmit(employeeForm)" #employeeForm="ngForm" novalidate>
   <div>
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" name="firstName" ngModel required>
-    <div *ngIf="employeeForm.submitted && !employeeForm.controls['firstName']?.valid">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" name="firstName" placeholder="John" required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['firstName']?.valid" class="requiredText">
       First name is required.
     </div>
   </div>
 
   <div>
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" name="lastName" ngModel required>
-    <div *ngIf="employeeForm.submitted && !employeeForm.controls['lastName']?.valid">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" name="lastName" placeholder="Doe" required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['lastName']?.valid" class="requiredText">
       Last name is required.
     </div>
   </div>
 
   <div>
-    <label for="dateOfBirth">Date of Birth:</label>
+    <label for="dateOfBirth">Date of Birth</label>
     <input type="date" id="dateOfBirth" name="dateOfBirth" ngModel required>
-    <div *ngIf="employeeForm.submitted && !employeeForm.controls['dateOfBirth']?.valid">
+    <div  *ngIf="employeeForm.submitted && !employeeForm.controls['dateOfBirth']?.valid" class="requiredText">
       Date of birth is required.
     </div>
   </div>
 
   <div>
-    <label for="jobTitle">Job Title:</label>
-    <input type="text" id="jobTitle" name="jobTitle" ngModel required>
-    <div *ngIf="employeeForm.submitted && !employeeForm.controls['jobTitle']?.valid">
+    <label for="jobTitle">Job Title</label>
+    <input type="text" id="jobTitle" name="jobTitle" placeholder="E.g. Developer" ngModel required>
+    <div *ngIf="employeeForm.submitted && !employeeForm.controls['jobTitle']?.valid" class="requiredText">
       Job title is required.
     </div>
   </div>
 
   <button type="submit">Save</button>
 </form>
+</div>

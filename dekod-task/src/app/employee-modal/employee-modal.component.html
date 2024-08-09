@@ -1,3 +1,5 @@
+
+
 <div class="modal-header">
   <h4 class="modal-title">{{ employee.firstName }} {{ employee.lastName }}</h4>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
@@ -7,13 +9,13 @@
 <div class="modal-body">
   <div class="row">
     <div class="col-md-4">
-      <img [src]="employee.image" alt="Employee Image" class="img-fluid">
+      <img src="/assets/profileIcon.jpg" alt="Employee Image" class="img-fluid">
     </div>
     <div class="col-md-8">
-      <p><strong>Date of Birth:</strong> {{ employee.dateOfBirth | date: 'yyyy-MM-dd' }}</p>
+      <p><strong>Date of Birth:</strong> {{ employee.dateOfBirth | date: 'dd-MM-yyy' }}</p>
       <p><strong>Job Title:</strong> {{ employee.jobTitle }}</p>
-      <p><strong>Recent Projects:</strong> {{ employee.recentProjects }}</p>
-      <p><strong>Description:</strong> {{ employee.description }}</p>
+      <p><strong>Department:</strong> Employee department</p>
+      <p><strong>Recent Projects:</strong> List of recent projects</p>
     </div>
   </div>
 </div>

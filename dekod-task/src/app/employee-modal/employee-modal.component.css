@@ -2,6 +2,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+
+}
+
+h4.modal-title {
+    margin: 0;
 }
 
 .modal-body img {
@@ -11,4 +17,14 @@
 
 .modal-body p {
     margin: 0.5rem 0;
+}
+
+button {
+    background-color: #1670BE;
+    border-radius: 5px;
+}
+
+.close {
+    border: 2px solid #1670BE;
+    background-color: white;
 }
